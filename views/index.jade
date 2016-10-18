@@ -26,6 +26,8 @@ block content
     //- p= data
     h4= title
     ul.collection
+      - if(data.length == 0)
+        p No result
       - for (let i=0; i < data.length; i++)
         li.collection-item= data[i].word
 
