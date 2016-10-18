@@ -8,14 +8,14 @@ var hasil = []
 
 util.anagrams = function(source, callback){
   word.findAll({
-    where: sequelize.where(sequelize.fn('char_length', sequelize.col('kata')), source.length)
+    where: sequelize.where(sequelize.fn('char_length', sequelize.col('kata')), source.length),
     }).then(function (data){
+      console.log(data[0].dataValues);
       for(var i = 0; i < data.length; i++){
-        if (data[i])
           hasil.push(data[i].dataValues.kata)
       }
       callback(source, hasil)
-    })
+      })
 }
 
 module.exports = util;
