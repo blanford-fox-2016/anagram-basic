@@ -1,5 +1,8 @@
 'use strict';
-let file = '../db/fixtures/words.txt';
+const fs = require('fs');
+const R = require('ramda')
+let file = './db/fixtures/words';
+
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
@@ -14,9 +17,12 @@ module.exports = {
       }], {});
     */
 
-    let data_array = fs.readFileSync(....)
+    let data_array = fs.readFileSync(file).toString().split('\n');
+    // [
+    //{words: word}
+    // ]
 
-    return queryInterface.bulkInsert('Person', data_array, {});
+    return queryInterface.bulkInsert('Words', the_obj(data_array), {});
   },
 
   down: function (queryInterface, Sequelize) {
@@ -29,3 +35,12 @@ module.exports = {
     */
   }
 };
+
+////
+let the_obj = (array) => {
+  let result = [];
+  for(let i = 0; i < array.length - 1; i += 1){
+    result.push({word:array[i]})
+  }
+  return result;
+}

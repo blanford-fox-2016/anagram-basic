@@ -2,7 +2,12 @@ extends layout
 
 block content
   h1= title
-  p anagram dari kata #{word} adalah :
+  p anagram dari kata #{input} adalah :
+  form(name="add-estimation", method="post")
+        div.input
+            input(type="text", name="word")
+            input(type="submit", value="add")
+
   if word
     ul
       each anagram in anagrams.length ? anagrams : ['There are no values']
